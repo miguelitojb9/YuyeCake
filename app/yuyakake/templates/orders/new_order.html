@@ -1,0 +1,348 @@
+{% load static %}
+<!-- order a cake section starts -->
+<style>
+    #galeria-imagenes {
+        position: relative;
+    }
+
+    #galeria-imagenes img.seleccionado {
+        border: 2px solid red;
+        width: 70%;
+        height: auto;
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+    }
+
+    #galeria-imagenes .zoom {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        display: none;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    #galeria-imagenes img.seleccionado:hover + .zoom {
+        display: block;
+    }
+
+    #galeria-imagenes .zoom:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+
+        border-color: green;
+
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #galeria-imagenes img.seleccionado:hover + .zoom:before {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    #galeria-zoom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    #galeria-zoom .zoom {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #CC3434;
+
+    }
+
+    #galeria-imagenes img.seleccionado:hover + #galeria-zoom .zoom {
+        display: block;
+    }
+
+    #galeria-zoom .zoom:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid red;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #galeria-imagenes img.seleccionado:hover + #galeria-zoom .zoom:before {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    #galeria-imagenes {
+        position: relative;
+    }
+
+    #galeria-imagenes img.seleccionado {
+        border: 2px solid red;
+        width: 70%;
+        height: auto;
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+    }
+
+    #galeria-zoom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    #galeria-zoom .zoom {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        display: none;
+    }
+
+    #galeria-imagenes img.seleccionado:hover + #galeria-zoom .zoom {
+        display: block;
+    }
+
+    #galeria-zoom .zoom:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid red;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    #galeria-imagenes img.seleccionado:hover + #galeria-zoom .zoom:before {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    {#<!--#}
+    {#-->#}
+
+    #galeria-imagenes {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #galeria-imagenes img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    select.custom-select:valid {
+        box-shadow: none;
+    }
+
+    .image-container {
+        background: radial-gradient(ellipse 60% 70% at center, rgba(255, 255, 255, 0.5) 50%, transparent 75%);
+        overflow: hidden;
+    }
+
+    .image-container img {
+        width: 70%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .text {
+        text-align: center;
+    }
+
+    .rounded-circle {
+        border-radius: 50%;
+    }
+
+
+</style>
+
+<section class="ftco-section img" id="order" style="background-image: url({% static 'images/order_bg.jpg' %});"
+         data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="col ftco-animate makereservation p-4 px-md-5 pb-md-5">
+                    <!-- Contenido de la columna aquí -->
+                    <div class="heading-section ftco-animate mb-5 text-center">
+                        <span class="subheading">Order</span>
+                        <h2 class="mb-4">Your Cake</h2>
+                    </div>
+                    <form class="needs-validation" novalidate method="post" id="create-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoria">Base:</label>
+                                    <select class="select form-select" name="base" id="id_base"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Dirección:</label>
+                                    <input class="form-control" id="id_addres" name="addres"
+                                           placeholder="dirección particular">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoria">Tamaño:</label>
+                                    <select class="select form-select" name="size" id="id_size"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="telefono" class="form-label">Teléfono:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <select id="telefono-prefijo" name="telefono-prefijo"
+                                                    class="form-select custom-select" novalidate>
+                                                <option value="+53">+53</option>
+                                                <option value="+51">+51</option>
+                                            </select>
+                                        </div>
+                                        <input type="number" id="telefono-resto" name="telefono-resto"
+                                               class="form-control"
+                                               pattern="^[1-9]\d{7}$" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoria">Merengue:</label>
+                                    <select class="select form-select" name="merengue" id="id_merengue"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoria">Pisos:</label>
+                                    <select class="select form-select" name="pisos" id="id_pisos"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Fecha de entrega:</label>
+                                    <div class="col-auto" id="calendario"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 mt-3">
+                                <div class="form-group text-center">
+                                    <input type="submit" value="Order Your Cake" class="btn btn-primary py-3 px-5">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Vendor Image Files -->
+            <div class="col-6 h-50  ">
+                <div class="row mt-5">
+                    <div class="col-3 text-center ">
+                        <div class="h-75 my-5">
+                            <img class="rounded-circle"
+                                 src="" id="base-imagen"
+                                 style="width: 100%;height: 100%; background: #bfbfbf">
+                            <div class="mt-2 ">
+                                <strong>
+                                    <span class="text p-3"
+                                          style="background: radial-gradient(ellipse 60% 70% at center, rgba(255, 255, 255, 0.5) 50%,
+                                          transparent 75%)">Base</span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 text-center ">
+                        <div class="h-75 my-5">
+                            <img class="rounded-circle"
+                                 src="" id="size-imagen"
+                                 style="width: 100%;height: 100%; background: #bfbfbf">
+                            <div class="mt-2 ">
+                                <strong>
+                                    <span class="text p-3"
+                                          style="background: radial-gradient(ellipse 60% 70% at center, rgba(255, 255, 255, 0.5) 50%,
+                                          transparent 75%)">Tamaño</span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 text-center ">
+                        <div class="h-75 my-5">
+                            <img class="rounded-circle"
+                                 src="" id="merengue-imagen"
+                                 style="width: 100%;height: 100%; background: #bfbfbf">
+                            <div class="mt-2 ">
+                                <strong>
+                                    <span class="text p-3"
+                                          style="background: radial-gradient(ellipse 60% 70% at center, rgba(255, 255, 255, 0.5) 50%,
+                                          transparent 75%)">Merengue</span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 text-center ">
+                        <div class="h-75 my-5">
+                            <img class="rounded-circle"
+                                 src="" id="pisos-imagen"
+                                 style="width: 100%;height: 100%; background: #bfbfbf">
+                            <div class="mt-2 ">
+                                <strong>
+                                    <span class="text p-3"
+                                          style="background: radial-gradient(ellipse 60% 70% at center, rgba(255, 255, 255, 0.5) 50%,
+                                          transparent 75%)">Pisos</span>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row mt-3">
+                    <div class="h-100 mt-5" id="galeria-imagenes">
+                    </div>
+                    <div id="galeria-zoom">
+                        <div class="zoom">asdasd</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+
+</section>
+<!-- order a cake section ends -->
+
+

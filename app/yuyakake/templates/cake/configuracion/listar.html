@@ -1,0 +1,96 @@
+{% extends 'admin/dashboard_admin.html' %}
+{% load l10n %}
+{% load static %}
+{% block pagetitle_section %}
+    <li class="breadcrumb-item">Cake</li>
+    <li class="breadcrumb-item active">Merengue</li>
+{% endblock %}
+
+{% block content_dashboar %}
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tamaño:
+                            <a class="btn btn-primary" href="{% url 'cake_new' %}">Nuevo Cake</a></h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">image</th>
+                                <th scope="col">name</th>
+                                <th scope="col">description</th>
+                                <th scope="col">price</th>
+
+                                <th scope="col">shape</th>
+                                <th scope="col">layers</th>
+                                <th scope="col">filling</th>
+                                <th scope="col">meringue</th>
+                                <th scope="col">size</th>
+                                <th scope="col">rating</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if object_list %}
+                                {% for obj in object_list %}
+                                    <tr>
+
+                                        <th scope="row">{{ obj.id }}</th>
+                                        <th scope="row">
+                                            <img src="{{ obj.image.url }}" class="rounded-circle"
+                                                 alt="{{ obj.image }}"
+                                                 style="height: 100px; width: 100px">
+                                        </th>
+                                        <td >{{ obj.name }}</td>
+                                        <td >{{ obj.description }}</td>
+
+                                        <td >${{ obj.price|floatformat:2 }}</td>
+
+                                        <td >{{ obj.base }}</td>
+                                        <td >{{ obj.layers }}</td>
+                                        <td >{{ obj.filling }}</td>
+                                        <td >{{ obj.meringue }}</td>
+                                        <td >{{ obj.size }}</td>
+
+
+                                    </tr>
+                                {% endfor %}
+
+
+
+
+                            {% else %}
+
+                            {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+{% block extra_scripts %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#Bases").attr("aria-expanded", "true");
+            $("#components-nav").addClass("show");
+
+
+        });
+    </script>
+{% endblock %}

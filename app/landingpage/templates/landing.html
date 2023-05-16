@@ -1,0 +1,924 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'flatpickr/flatpickr.min.css' %}">
+    <script src="{% static 'flatpickr/flatpickr.js' %}"></script>
+    <script src="{% static 'flatpickr/flatpickr.min.css' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>
+        {% block title %}
+            Admin - Yuya'S Cake
+        {% endblock %}
+    </title>
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <style>
+
+
+        {#        #}
+
+
+        .featured-menus {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .featured-menus .text {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+{% block cotainer_body %}
+
+    <!-- navigation starts -->
+    {% include 'nav_landing.html' %}
+    <!-- navigation ends -->
+
+    <!-- slider  section start -->
+    <section class="home-slider owl-carousel js-fullheight">
+        <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text js-fullheight justify-content-center align-items-center"
+                     data-scrollax-parent="true">
+
+                    <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Yuya</span>
+                        <h1 class="mb-4">Cake</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_2.jpg' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text js-fullheight justify-content-center align-items-center"
+                     data-scrollax-parent="true">
+
+                    <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Yuya</span>
+                        <h1 class="mb-4">Wedding Cake</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_3.jpg' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text js-fullheight justify-content-center align-items-center"
+                     data-scrollax-parent="true">
+
+                    <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Yuya</span>
+                        <h1 class="mb-4">Beleniss Special Dessert</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_4.jpg' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text js-fullheight justify-content-center align-items-center"
+                     data-scrollax-parent="true">
+
+                    <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                        <span class="subheading">Yuya</span>
+                        <h1 class="mb-4">Beleniss Special Pastries</h1>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- slider  section end  -->
+
+
+    <!-- featured section starts  -->
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="featured">
+                        <div class="row" id="cake-samples-most-liked">
+                            {#                            <div class="col-md-3">#}
+                            {#                                <div class="featured-menus ftco-animate">#}
+                            {#                                    <div class="menu-img img"#}
+                            {#                                         style="background-image: url({% static 'images/b1.jpg' %});"></div>#}
+                            {#                                    <div class="text text-center">#}
+                            {#                                        <h3>Desert</h3>#}
+                            {#                                        <p><span>Chocolate</span>,#}
+                            {#                                            <span>Sprinkles</span>,<span>Strawberry</span>,<span>Waffers</span></p>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- featured section ends  -->
+    {% if not user.is_authenticated %}
+        <!-- about us section starts  -->
+        <section class="ftco-section ftco-counter img ftco-no-pt" id="section-counter">
+            <div class="container">
+
+                <div class="row d-md-flex">
+                    <div class="col-md-9">
+                        <div class="row d-md-flex align-items-center">
+                            <div
+                                    class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18">
+                                    <div class="text">
+                                        <strong class="number" data-number="11">0</strong>
+                                        <span>Years of Experience</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                    class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18">
+                                    <div class="text">
+                                        <strong class="number" data-number="100">0</strong>
+                                        <span>Cakes/Variety</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                    class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18">
+                                    <div class="text">
+                                        <strong class="number" data-number="30">0</strong>
+                                        <span>Staffs</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                    class="col-md-6 col-lg-3 mb-4 mb-lg-0 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18">
+                                    <div class="text">
+                                        <strong class="number" data-number="1500">0</strong>
+                                        <span>Happy Customers</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="ftco-wrap-about" id="about">
+            <div class="intro">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="intro_content">
+                                <div class="intro_subtitle page_subtitle">About Us</div>
+                                <div class="intro_title">
+                                    <h2>Beautiful Story</h2>
+                                </div>
+                                <div class="intro_text">
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, voluptatum, earum
+                                        corrupti molestiae id, alias quaerat qui expedita voluptatibus sed magnam
+                                        aperiam
+                                        quos! Illum quo nobis repellat possimus alias reiciendis quas pariatur, labore
+                                        maxime blanditiis. Nam perferendis veritatis necessitatibus? Animi distinctio at
+                                        et
+                                        assumenda doloremque possimus unde doloribus aliquid nobis.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-md-6 intro_col">
+                                    <div class="intro_image"><img src="{% static 'images/intro_1.jpg' %}" alt="intro">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-md-6 intro_col">
+                                    <div class="intro_image"><img src="{% static 'images/intro_2.jpg' %}" alt="intro">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about us section ends  -->
+    {% endif %}
+
+
+    <!-- gallery section starts  -->
+    <section class="ftco-section bg-light" id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title normal-title">
+                        <div class="row justify-content-center mb-5 pb-2">
+                            <div class="col-md-12 text-center heading-section ftco-animate">
+                                <span class="subheading">Gallery</span>
+                                <h2 class="mb-4">Our Hot Picked Cakes</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+                <div class="row" id="cake-samples-all"></div>
+        </div>
+
+
+    </section>
+    <!-- gallery section ends  -->
+
+    <!-- menu section starts -->
+    <section class="ftco-section" id="menu">
+        <div class="container-fluid px-4">
+            <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <span class="subheading">Specialities</span>
+                    <h2 class="mb-4">Our Menu</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 menu-wrap">
+                    <div class="heading-menu text-center ftco-animate">
+                        <h3>Cakes</h3>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu1.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Strawberry</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹400</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu2.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Chocolate Cake</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹399</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu3.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Red Valvet</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹500</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 menu-wrap">
+                    <div class="heading-menu text-center ftco-animate">
+                        <h3>Wedding Cake</h3>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu4.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Pineapple</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹450</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu5.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Belgium Cake</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹400</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu6.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Cookies</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹400</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 menu-wrap">
+                    <div class="heading-menu text-center ftco-animate">
+                        <h3>Pastries</h3>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu7.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Blackberries</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹400</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu8.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Orange</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹400</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menus d-flex ftco-animate">
+                        <div class="menu-img img" style="background-image: url({% static 'images/menu9.jpg' %});"></div>
+                        <div class="text">
+                            <div class="d-flex">
+                                <div class="one-half">
+                                    <h3>Mango</h3>
+                                </div>
+                                <div class="one-forth">
+                                    <span class="price">₹400</span>
+                                </div>
+                            </div>
+                            <p><span>Strawberry</span>, <span>Chocolate</span>, <span>Berry</span>, <span>Cream</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- menu section ends -->
+
+    {% if user.is_authenticated %}
+        {% include 'orders/new_order.html' %}
+    {% endif %}
+    {% if not user.is_authenticated %}
+        <!-- testimonial section starts -->
+        <section class="ftco-section testimony-section img" id="testimonial"
+                 style="background-image: url({% static 'images/bg_1.jpg' %});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                        <span class="subheading">Testimonials</span>
+                        <h2 class="mb-3">Happy Clients</h2>
+                    </div>
+                </div>
+                <div class="row ftco-animate">
+                    <div class="col-md-12">
+                        <div class="carousel-testimony owl-carousel ftco-owl">
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-quote-left"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-4">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo corrupti
+                                            ratione voluptatibus recusandae dolore.
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img"
+                                                 style="background-image: url({% static 'images/person_1.jpg' %});"></div>
+                                            <div class="pl-3">
+                                                <p class="name">Nilay Hirpara</p>
+                                                <span class="position">Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-quote-left"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-4">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo corrupti
+                                            ratione voluptatibus recusandae dolore.
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img"
+                                                 style="background-image: url({% static 'images/person_2.jpg' %});"></div>
+                                            <div class="pl-3">
+                                                <p class="name">Nilay Hirpara</p>
+                                                <span class="position">Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-quote-left"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-4">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo corrupti
+                                            ratione voluptatibus recusandae dolore.
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img"
+                                                 style="background-image: url({% static 'images/person_3.jpg' %});"></div>
+                                            <div class="pl-3">
+                                                <p class="name">Nilay Hirpara</p>
+                                                <span class="position">Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-quote-left"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-4">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo corrupti
+                                            ratione voluptatibus recusandae dolore.
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img"
+                                                 style="background-image: url({% static 'images/person_4.jpg' %});"></div>
+                                            <div class="pl-3">
+                                                <p class="name">Nilay Hirpara</p>
+                                                <span class="position">Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap py-4">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-quote-left"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-4">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo corrupti
+                                            ratione voluptatibus recusandae dolore.
+                                        </p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-img"
+                                                 style="background-image: url({% static 'images/person_1.jpg' %});"></div>
+                                            <div class="pl-3">
+                                                <p class="name">Nilay Hirpara</p>
+                                                <span class="position">Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- testimonial section ends -->
+    {% endif %}
+    <!-- staff section --- chef starts -->
+
+    <section class="ftco-section" id="chef">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-2">
+                <div class="col-md-12 text-center heading-section ftco-animate">
+                    <span class="subheading">Chef</span>
+                    <h2 class="mb-4">Our Master Chef</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="staff">
+                        <div class="img" style="background-image: url({% static 'images/chef4.jpg' %});"></div>
+                        <div class="text pt-4">
+                            <h3>Navnit Kumar</h3>
+                            <span class="position mb-2">Cake Designer</span>
+                            <div class="faded">
+                                <ul class="ftco-social d-flex">
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="staff">
+                        <div class="img" style="background-image: url({% static 'images/chef1.jpg' %});"></div>
+                        <div class="text pt-4">
+                            <h3>Nilay Hirpara</h3>
+                            <span class="position mb-2">Owner</span>
+                            <div class="faded">
+                                <ul class="ftco-social d-flex">
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="staff">
+                        <div class="img" style="background-image: url({% static 'images/chef2.jpg' %});"></div>
+                        <div class="text pt-4">
+                            <h3>Ravi Kumawat</h3>
+                            <span class="position mb-2">Cake Maker</span>
+                            <div class="faded">
+                                <ul class="ftco-social d-flex">
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 ftco-animate">
+                    <div class="staff">
+                        <div class="img" style="background-image: url({% static 'images/chef3.jpg' %});"></div>
+                        <div class="text pt-4">
+                            <h3>Somyadeep Dey</h3>
+                            <span class="position mb-2">Manager</span>
+                            <div class="faded">
+                                <ul class="ftco-social d-flex">
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- staff section --- chef ends -->
+
+
+    <!-- blog section starts -->
+    <section class="ftco-section bg-light" id="blog">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <span class="subheading">Blog</span>
+                    <h2 class="mb-4">Recent Posts</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-cat-widget">
+                        <div class="content relative">
+                            <div class="overlay overlay-bg"></div>
+                            <a href="#" target="_blank">
+                                <div class="thumb">
+                                    <img src="{% static 'images/cat-widget1.jpg' %}" alt=""
+                                         class="content-image img-fluid d-block mx-auto">
+                                </div>
+                                <div class="content-details">
+                                    <h4 class="content-title mx-auto text-uppercase">Social Life</h4>
+                                    <span></span>
+                                    <p>Enjoy your social life.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-cat-widget">
+                        <div class="content relative">
+                            <div class="overlay overlay-bg"></div>
+                            <a href="#" target="_blank">
+                                <div class="thumb">
+                                    <img src="{% static 'images/cat-widget2.jpg' %}" alt=""
+                                         class="content-image img-fluid d-block mx-auto">
+                                </div>
+                                <div class="content-details">
+                                    <h4 class="content-title mx-auto text-uppercase">Politics</h4>
+                                    <span></span>
+                                    <p>Be a part of politics.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-cat-widget">
+                        <div class="content relative">
+                            <div class="overlay overlay-bg"></div>
+                            <a href="#" target="_blank">
+                                <div class="thumb">
+                                    <img src="images/cat-widget3.jpg" alt=""
+                                         class="content-image img-fluid d-block mx-auto">
+                                </div>
+                                <div class="content-details">
+                                    <h4 class="content-title mx-auto text-uppercase">Food</h4>
+                                    <span></span>
+                                    <p>Let the food be finished.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- blog section ends -->
+
+    <!-- footer section starts -->
+    <section class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6 col-lg-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Beleniss</h2>
+                        <p>We serve and take all type of cake orders. You can personalised cake of your own choice. We
+                            have the best chef in the city working for us and happying serving to you.
+                            <br><br><br>
+                            Belenisscake@gmail.com
+                            <br>
+                            8888888888
+                        </p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Open Hours</h2>
+                        <ul class="list-unstyled open-hours">
+                            <li class="d-flex"><span>Monday</span><span>9:00 - 24:00</span></li>
+                            <li class="d-flex"><span>Tuesday</span><span>9:00 - 24:00</span></li>
+                            <li class="d-flex"><span>Wednesday</span><span>9:00 - 24:00</span></li>
+                            <li class="d-flex"><span>Thursday</span><span>9:00 - 24:00</span></li>
+                            <li class="d-flex"><span>Friday</span><span>9:00 - 02:00</span></li>
+                            <li class="d-flex"><span>Saturday</span><span>9:00 - 02:00</span></li>
+                            <li class="d-flex"><span>Sunday</span><span> 9:00 - 02:00</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Donde estamos</h2>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1600.0969811296593!2d-77.12068571032717!3d20.34715360261553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ed19c13745e6fa7%3A0xc204095500433477!2sQuintin%20Banderas%2C%20Manzanillo%2C%20Cuba!5e1!3m2!1ses-419!2sfr!4v1684134472579!5m2!1ses-419!2sfr"
+                                width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="thumb d-sm-flex">
+                        <a href="#" class="thumb-menu img"
+                           style="background-image: url({% static 'images/insta-4.jpg' %});"></a>
+                        <a href="#" class="thumb-menu img"
+                           style="background-image: url({% static 'images/insta-5.jpg' %});"></a>
+                        <a href="#" class="thumb-menu img"
+                           style="background-image: url({% static 'images/insta-6.jpg' %});"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Newsletter</h2>
+                    <p>To get cake catalogue every month by subscribing below.</p>
+                    <form action="#" class="subscribe-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control mb-2 text-center"
+                                   placeholder="johndoe@gmail.com">
+                            <input type="submit" value="Subscribe" class="form-control submit px-3">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- footer section ends -->
+
+
+
+
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <!-- scripts -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'flatpickr/flatpickr.js' %}"></script>
+    <script src="{% static 'flatpickr/flatpickr.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+
+    <script src="{% static 'assets/vendor/' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'js/scrollax.min.js' %}"></script>
+    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'utils/generic.js' %}"></script>
+    <script src="{% static 'utils/jquery.ez-plus.js' %}"></script>
+    <script src="{% static 'order-js/new_order.js' %}"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            get_cakesamples();
+
+
+        });
+        function galeri() {
+            var galleryWidth = $('.gallery-container').width();
+            var imageCount = $('#cake-samples-all .gallery__pic').length;
+            alert(imageCount)
+            var imageWidth = galleryWidth / 4;
+            var totalWidth = imageWidth * imageCount;
+            $('#cake-samples-all').css('width', totalWidth);
+            $('#cake-samples-all .col-lg-3').css('width', imageWidth);
+
+            var currentImage = 1;
+            $('#cake-samples-all .gallery__pic').eq(currentImage).addClass('current');
+            $('#cake-samples-all .gallery__pic').eq(currentImage - 1).addClass('prev');
+            $('#cake-samples-all .gallery__pic').eq(currentImage + 1).addClass('next');
+
+            $('.gallery-nav').click(function () {
+                var currentLeft = parseInt($('#cake-samples-all').css('left'));
+                var newLeft = currentLeft;
+                if ($(this).hasClass('prev')) {
+                    newLeft += imageWidth * 4;
+                    currentImage--;
+                } else if ($(this).hasClass('next')) {
+                    newLeft -= imageWidth * 4;
+                    currentImage++;
+                }
+                if (newLeft > 0) {
+                    newLeft = 0;
+                }
+                if (newLeft < -(totalWidth - galleryWidth)) {
+                    newLeft = -(totalWidth - galleryWidth);
+                }
+                $('#cake-samples-all').animate({
+                    left: newLeft
+                }, 500);
+
+                $('#cake-samples-all .gallery__pic').removeClass('current prev next');
+                $('#cake-samples-all .gallery__pic').eq(currentImage).addClass('current');
+                $('#cake-samples-all .gallery__pic').eq(currentImage - 1).addClass('prev');
+                $('#cake-samples-all .gallery__pic').eq(currentImage + 1).addClass('next');
+            });
+
+        }
+
+        function get_cakesamples() {
+            enviarAjax("home/get_cakesamples/ ", "GET", null,
+                function (data) {
+                    $('#cake-samples-most-liked').empty();
+                    $('#cake-samples-all').empty();
+                    if ('error' in data) {
+                        // Se muestra el mensaje de error en un elemento HTML
+                        mostrarNotificacion("warning", 'top-start', data.error);
+
+                    } else {
+                        $.each(data.slice(0, 4), function (index, cakesample) {
+                            var image = $('<div class="col-md-3"><div class="featured-menus "><img class="menu-img img">' +
+                                '<div class="text text-center"><h3></h3><p><span></span></p></div></div></div>');
+                            // Establecer la imagen de fondo y los datos de nombre y descripción
+                            image.find('.menu-img').attr('src', cakesample.image_url);
+                            image.find('h3').text(cakesample.name);
+                            image.find('p').text(cakesample.description);
+
+                            // Agregar el elemento de imagen a la galería
+                            $('#cake-samples-most-liked').append(image);
+
+
+                        });
+                        $.each(data, function (index, cakesample) {
+
+                            var image = $('<img>').attr('src', cakesample.image_url).attr('alt', cakesample.name);
+                            var galleryItem = $('<div>').addClass('col-lg-3 col-md-4 col-6 p-0').append($('<div>').addClass('gallery__pic').append(image));
+                            $('#cake-samples-all').append(galleryItem);
+                        });
+                    }
+                },
+                function () {
+                    mostrarNotificacion("error", 'top-start', "No se han podido cargar los datos");
+                }
+            )
+        }
+    </script>
+
+
+{% endblock %}
+
+</body>
+</html>

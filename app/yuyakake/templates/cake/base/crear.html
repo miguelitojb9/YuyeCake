@@ -1,0 +1,58 @@
+{% extends 'admin/dashboard_admin.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block pagetitle_section %}
+   / Cake  <li class="breadcrumb-item active"><a href="{% url 'base_list' %}">Bases</a></li>
+{% endblock %}
+
+{% block content_dashboar %}
+    {% block left_side_columns %}
+        <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+                <form class="row g-3 needs-validation" novalidate method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-left">
+                        <a class="btn btn-warning" href="{% url 'base_list' %}">Cancelar</a>
+
+                        <button class="btn btn-primary " type="submit">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    {% endblock %}
+    {% block right_side_columns %}
+        <div class="col-6">
+            <div class="card">
+                <img style="width: 100%;height: 100%" alt="" id="preview-image">
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#id_image").change(function () {
+
+                var file = this.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (event) {
+                        $("#preview-image").attr("src", event.target.result);
+                        $("#preview-image").show();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    $("#preview-image").attr("src", "");
+                    $("#preview-image").hide();
+                }
+            });
+
+        })
+    </script>
+{% endblock %}

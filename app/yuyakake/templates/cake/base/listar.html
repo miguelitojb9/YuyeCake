@@ -1,0 +1,84 @@
+{% extends 'admin/dashboard_admin.html' %}
+{% load static %}
+
+{% block pagetitle_section %}
+    / Cake <li class="breadcrumb-item active">Bases</li>
+{% endblock %}
+
+{% block content_dashboar %}
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bases:
+                            <a class="btn btn-primary" href="{% url 'base_new' %}">Nueva Base</a></h5>
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Image</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if object_list %}
+                                {% for obj in object_list %}
+                                    <tr>
+                                        <th scope="row">{{ obj.id }}</th>
+                                        <td class="text-center">{{ obj.name }}</td>
+                                        <td>
+                                            {% if obj.disponible %}
+                                                <span class="badge bg-success">disponible</span>
+
+                                            {% else %}
+                                                <span class="badge bg-danger">no disponible</span>
+                                            {% endif %}
+                                        </td>
+                                        <th scope="row"><img src="{{ obj.image.url }}" class="rounded-circle"
+                                                             alt="{{ obj.image }}"
+                                                             style="height: 100px; width: 100px"></th>
+
+
+                                    </tr>
+                                {% endfor %}
+
+
+
+
+                            {% else %}
+
+                            {% endif %}
+
+
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+{% block extra_scripts %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script>
+        $(function () {
+            $("#bases").attr("aria-expanded", "true");
+            $("#components-nav").addClass("show");
+
+
+        });
+    </script>
+{% endblock %}
